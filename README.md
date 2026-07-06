@@ -113,9 +113,17 @@ This project is deployed to cloud.gov Platform with SSR support.
 - **Platform:** cloud.gov (Cloud Foundry)
 - **Organization:** sandbox-gsa
 - **Space:** jk-sandbox
-- **Memory:** 1GB
+- **Memory:** 512M
 - **Instances:** 1
-- **CI/CD:** GitHub Actions (automatic deployment on push to `main`)
+- **CI/CD:** GitHub Actions (automatic deployment on merge to `main`)
+- **Repository:** https://github.com/GSA-TTS/TTSE-petrified-forest-website
+
+**Deployment Process:**
+1. Create feature branch and make changes
+2. Push branch and create Pull Request
+3. Get PR reviewed and approved (required by branch protection)
+4. Merge PR to `main`
+5. GitHub Actions automatically deploys to cloud.gov
 
 For complete deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md).
 

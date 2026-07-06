@@ -1,5 +1,7 @@
 name: Deploy to cloud.gov
 
+# This workflow runs automatically when PRs are merged to main (branch is protected)
+# It can also be triggered manually from the Actions tab
 on:
   push:
     branches:

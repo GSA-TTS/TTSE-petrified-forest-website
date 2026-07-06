@@ -1,0 +1,12 @@
+---
+applications:
+  - name: ttse-petrified-forest-website
+    memory: 512M
+    instances: 1
+    buildpacks:
+      - nodejs_buildpack
+    command: node build/index.js
+    env:
+      NODE_ENV: production
+    routes:
+      - route: ttse-petrified-forest-website.app.cloud.gov

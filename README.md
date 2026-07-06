@@ -101,7 +101,23 @@ TTSE-petrified-forest-website/
 ├── .prettierrc             # Prettier configuration
 └── AGENTS.md               # AI agent behavioral rules
 
-##  Deployment
+## Deployment
+
+### cloud.gov Platform (Production)
+
+This project is deployed to cloud.gov Platform with SSR support.
+
+**Live URL:** https://ttse-petrified-forest-website.app.cloud.gov
+
+**Deployment Details:**
+- **Platform:** cloud.gov (Cloud Foundry)
+- **Organization:** sandbox-gsa
+- **Space:** jk-sandbox
+- **Memory:** 1GB
+- **Instances:** 1
+- **CI/CD:** GitHub Actions (automatic deployment on push to `main`)
+
+For complete deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md).
 
 ### Building for Production
 
@@ -109,8 +125,10 @@ TTSE-petrified-forest-website/
 # Build the application
 npm run build
 
-# Preview the build
-npm run preview
+# Start production server locally
+npm start
+
+# Preview at http://localhost:8080
 ```
 
 ### Docker Production Build

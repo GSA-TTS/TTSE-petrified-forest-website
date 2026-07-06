@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    image: ttse-petrified-forest-website
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: node
+    working_dir: /app
+
+volumes:
+  node_modules:

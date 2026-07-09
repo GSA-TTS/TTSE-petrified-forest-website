@@ -8,6 +8,7 @@
     "npm": ">=10.0.0"
   },
   "scripts": {
+    "federalist": "npm run build",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",

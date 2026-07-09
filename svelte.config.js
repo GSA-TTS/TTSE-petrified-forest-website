@@ -11,7 +11,6 @@ const config = {
 		adapter: adapter({
 			pages: isFederalistBuild ? '_site' : 'build',
 			assets: isFederalistBuild ? '_site' : 'build',
-			fallback: '404.html',
 			precompress: false,
 			strict: true
 		})

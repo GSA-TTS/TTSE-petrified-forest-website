@@ -8,7 +8,7 @@
 		"npm": ">=10.0.0"
 	},
 	"scripts": {
-		"federalist": "FEDERALIST_BUILD=true npm run build && node scripts/build-404.js",
+		"federalist": "FEDERALIST_BUILD=true npm run build",
 		"dev": "vite dev",
 		"build": "vite build && node scripts/build-404.js",
 		"preview": "vite preview",

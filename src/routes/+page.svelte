@@ -11,7 +11,7 @@
 	<div class="grid-container">
 		<h1>Welcome to TTSE Petrified Forest</h1>
 		<p>This is a SvelteKit application using USWDS components.</p>
-		
+
 		<Button variant="default">Get Started</Button>
 	</div>
 </div>

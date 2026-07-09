@@ -1,3 +1,16 @@
+# DISABLED: This workflow deploys to cloud.gov Platform (Cloud Foundry)
+# Migrated to cloud.gov Pages - see pages.json for current deployment config
+# Keep this file for reference if we need to re-enable Platform deployment
+#
+# To re-enable:
+# 1. Rename this file back to deploy.yml
+# 2. Update svelte.config.js to use @sveltejs/adapter-node
+# 3. Change package.json to use adapter-node instead of adapter-static
+# 4. Remove pages.json configuration
+#
+# Original workflow below:
+# ---
+
 name: Deploy to cloud.gov
 
 # This workflow runs automatically when PRs are merged to main (branch is protected)

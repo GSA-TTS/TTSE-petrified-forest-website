@@ -1,5 +1,7 @@
-import adapter from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+const isFederalistBuild = process.env.FEDERALIST_BUILD === 'true';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -7,9 +9,11 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-			out: 'build',
+			pages: isFederalistBuild ? '_site' : 'build',
+			assets: isFederalistBuild ? '_site' : 'build',
+			fallback: '404.html',
 			precompress: false,
-			envPrefix: ''
+			strict: true
 		})
 	}
 };

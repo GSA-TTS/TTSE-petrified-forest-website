@@ -1,18 +1,21 @@
 <script lang="ts">
 	import { Button } from '@gsa-tts/svelte-ui-uswds';
+
+	function handleGetStarted() {
+		window.location.href = 'https://gsaext-fpdf-uat.cloud.databricks.com/';
+	}
 </script>
 
 <svelte:head>
-	<title>TTSE Petrified Forest</title>
-	<meta name="description" content="Welcome to the TTSE Petrified Forest website" />
+	<title>Federal Procurement Data Fabric</title>
+	<meta name="description" content="Federal Procurement Data Fabric" />
 </svelte:head>
 
 <div class="usa-section">
 	<div class="grid-container">
-		<h1>Welcome to TTSE Petrified Forest</h1>
-		<p>This is a SvelteKit application using USWDS components.</p>
+		<h1>Federal Procurement Data Fabric</h1>
 
-		<Button variant="default">Get Started</Button>
+		<Button variant="default" onclick={handleGetStarted}>Go to Databricks</Button>
 	</div>
 </div>
 

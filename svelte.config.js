@@ -14,7 +14,10 @@ const config = {
 			fallback: '404.html',
 			precompress: false,
 			strict: true
-		})
+		}),
+		prerender: {
+			handleHttpError: 'warn'
+		}
 	}
 };
 

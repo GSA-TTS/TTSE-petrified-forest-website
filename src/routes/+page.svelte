@@ -1,5 +1,9 @@
 <script lang="ts">
 	import { Button } from '@gsa-tts/svelte-ui-uswds';
+
+	function handleGetStarted() {
+		window.location.href = 'https://gsaext-fpdf-uat.cloud.databricks.com/';
+	}
 </script>
 
 <svelte:head>
@@ -12,7 +16,7 @@
 		<h1>Welcome to TTSE Petrified Forest</h1>
 		<p>This is a SvelteKit application using USWDS components.</p>
 
-		<Button variant="default">Get Started</Button>
+		<Button variant="default" onclick={handleGetStarted}>Get Started</Button>
 	</div>
 </div>
 

@@ -8,9 +8,9 @@
 		"npm": ">=10.0.0"
 	},
 	"scripts": {
-		"federalist": "FEDERALIST_BUILD=true npm run build",
+		"federalist": "FEDERALIST_BUILD=true npm run build && node scripts/build-404.js",
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "vite build && node scripts/build-404.js",
 		"preview": "vite preview",
 		"start": "node build/index.js",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

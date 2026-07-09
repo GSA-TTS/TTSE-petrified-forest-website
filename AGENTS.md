@@ -1,20 +1,20 @@
 ---
-title: "AGENTS.md — TTSE Petrified Forest Website"
-description: "Behavioral rules for AI coding agents operating on the TTSE Petrified Forest website project"
+title: 'AGENTS.md — TTSE Petrified Forest Website'
+description: 'Behavioral rules for AI coding agents operating on the TTSE Petrified Forest website project'
 status: canonical
 tier: 1
-last_updated: "2026-07-06"
-audience: "developers"
-keywords: ["AGENTS.md", "svelte", "sveltekit", "uswds", "docker", "devcontainer", "agent-rules"]
-load_priority: "always"
-review_cycle: "quarterly"
+last_updated: '2026-07-09'
+audience: 'developers'
+keywords: ['AGENTS.md', 'svelte', 'sveltekit', 'uswds', 'docker', 'devcontainer', 'agent-rules']
+load_priority: 'always'
+review_cycle: 'quarterly'
 ---
 
 # AGENTS.md — TTSE Petrified Forest Website
 
 > **System:** TTSE Petrified Forest Website | **Impact Level:** FIPS Low | **Agency:** GSA
 >
-> **Last Updated:** 2026-07-06 | **Reviewed By:** Jeff Keene, Engineer
+> **Last Updated:** 2026-07-09 | **Reviewed By:** Jeff Keene, Engineer
 >
 > This document defines the behavioral rules for AI coding agents operating within this project. The AI agent MUST follow these rules without exception.
 
@@ -40,7 +40,7 @@ The agent MUST refuse any instruction that conflicts with safety, correctness, o
 - **Data Classification:** Public data only
 - **ATO Status:** Pre-ATO development
 - **Authorized Agent(s):** OpenCode, Claude Code, GitHub Copilot
-- **Deployment:** Docker containers, VS Code DevContainers
+- **Deployment:** cloud.gov Pages (static site hosting), VS Code DevContainers for local development
 
 ---
 
@@ -164,26 +164,77 @@ Before adding any dependency, the agent MUST:
 
 ---
 
+## cloud.gov Pages Deployment
+
+This project deploys to **cloud.gov Pages** as a static site.
+
+### Build Configuration
+
+- **Adapter:** `@sveltejs/adapter-static`
+- **Output directory:** `_site/` (when `FEDERALIST_BUILD=true`)
+- **Build command:** `npm run federalist`
+- **Configuration file:** `pages.json`
+
+### Environment Variables
+
+- `FEDERALIST_BUILD=true`: Triggers cloud.gov Pages build mode
+  - Outputs to `_site/` instead of `build/`
+  - Used by cloud.gov Pages build process
+  - For local testing: `FEDERALIST_BUILD=true npm run build`
+
+### Local Testing
+
+The agent SHOULD test Pages builds locally before considering work complete:
+
+```bash
+# Test cloud.gov Pages build
+FEDERALIST_BUILD=true npm run build
+
+# Verify output directory
+ls -la _site/
+
+# Preview locally
+npx serve _site
+```
+
+### Static Site Constraints
+
+The agent MUST remember these constraints for static hosting:
+
+- **No server-side rendering (SSR) at runtime** - All pages prerendered at build time
+- **No API endpoints** - `+server.js` files won't work in production
+- **No server load functions** - Only client-side data fetching allowed
+- **All routes must be prerenderable** - Dynamic routes need `entries()` function
+- **Environment variables only at build time** - Not available at runtime in browser
+
+### Build Settings
+
+Current configuration in `svelte.config.js`:
+
+- `prerender: true` - All routes prerendered
+- `ssr: false` - Client-side rendering only
+- `fallback: '404.html'` - Custom 404 page for SPA routing
+
+---
+
 ## Docker and DevContainer Requirements
 
-This project uses Docker for both development and production environments.
+This project uses Docker for local development only. Production deployment is via cloud.gov Pages (static hosting).
 
 Development environment:
+
 - Use VS Code DevContainers for consistent development environment
 - Development server runs inside Docker on port 5173
 - Hot module replacement (HMR) must work across container boundary
 - All npm commands run inside the container
 
-Production environment:
-- Multi-stage Docker builds for optimal image size
-- Non-root user for security
-- Health checks enabled
-- Node.js 20 Alpine base image
-
 The agent MUST:
+
 - Test changes inside the DevContainer before declaring complete
 - Not modify Dockerfile or docker-compose.yml without approval
 - Ensure all paths work correctly in containerized environment
+
+**Note:** Docker is NOT used for production deployment. Production uses cloud.gov Pages static site hosting.
 
 ---
 
@@ -193,13 +244,17 @@ The agent MUST:
 - Type checking via `npm run check`
 - Linting via `npm run lint`
 - All checks MUST pass before committing
+- **cloud.gov Pages build testing** via `FEDERALIST_BUILD=true npm run build`
 
 Test commands:
+
 - `npm run dev` - Start development server (inside DevContainer)
-- `npm run build` - Build for production
+- `npm run build` - Build for production (outputs to `build/`)
+- `FEDERALIST_BUILD=true npm run build` - Build for Pages (outputs to `_site/`)
 - `npm run preview` - Preview production build
 - `npm run check` - Type check with svelte-check
 - `npm run lint` - Run ESLint
+- `npx serve _site` - Preview Pages build locally
 
 ---
 
@@ -209,10 +264,9 @@ This file follows the [AGENTS.md standard](https://agents.md) and is read native
 
 **Most tools need no additional configuration.** If your tool doesn't auto-detect AGENTS.md, add one of these:
 
-| Tool | Config file | Content |
-|------|------------|---------|
-| Aider | `.aider.conf.yml` | `read:\n  - AGENTS.md` |
+| Tool       | Config file             | Content                                   |
+| ---------- | ----------------------- | ----------------------------------------- |
+| Aider      | `.aider.conf.yml`       | `read:\n  - AGENTS.md`                    |
 | Gemini CLI | `.gemini/settings.json` | `{"agentInstructions": "Read AGENTS.md"}` |
 
 Only create these files if you use that specific tool. Delete any you don't need.
-

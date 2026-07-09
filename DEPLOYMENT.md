@@ -1,8 +1,159 @@
-# cloud.gov Deployment Guide
+# Deployment Guide
 
-## Overview
+## Current Deployment: cloud.gov Pages
 
-This project is configured to deploy to **cloud.gov Platform** (not cloud.gov Pages) using GitHub Actions for continuous deployment. The SvelteKit SSR application runs as a Node.js application on cloud.gov.
+This project is currently configured for **cloud.gov Pages** static site hosting.
+
+**Configuration files:**
+
+- `pages.json` - cloud.gov Pages build configuration
+- `svelte.config.js` - Outputs to `_site/` when `FEDERALIST_BUILD=true`
+
+**Environment variable:**
+
+- `FEDERALIST_BUILD=true` - Triggers cloud.gov Pages build mode
+
+### How cloud.gov Pages Works
+
+1. Push to GitHub repository
+2. cloud.gov Pages detects changes
+3. Runs `npm run federalist` (which runs `npm run build`)
+4. Reads `_site/` directory (specified in `pages.json`)
+5. Deploys static files to CDN
+
+### Local Testing
+
+Test the Pages build locally:
+
+```bash
+# Build for cloud.gov Pages
+FEDERALIST_BUILD=true npm run build
+
+# Verify output directory
+ls -la _site/
+
+# Preview locally
+npx serve _site
+# Visit http://localhost:3000
+```
+
+### Setting Up cloud.gov Pages
+
+1. **Push code to GitHub** (if not already done)
+2. **Login to cloud.gov Pages**: https://pages.cloud.gov
+3. **Add site**:
+   - Click "+ Add Site"
+   - Select "Create a site from existing Github repository"
+   - Enter repository URL: `https://github.com/GSA-TTS/TTSE-petrified-forest-website`
+   - Select organization and branch (main)
+   - Site engine: **Node.js** (Pages will read `pages.json`)
+4. **Wait for build**: First build takes 2-5 minutes
+5. **Access site**: Pages will provide a URL like `https://[site-name].sites.pages.cloud.gov`
+
+### Monitoring Builds
+
+- View build logs in cloud.gov Pages UI
+- Build status updates automatically
+- Failed builds show error messages in logs
+
+### Custom Domain (Optional)
+
+To use a custom domain:
+
+1. In Pages UI → Site Settings → Custom Domains
+2. Add desired domain (e.g., `petrifiedforest.gov`)
+3. Follow DNS configuration instructions
+4. Wait for DNS propagation (can take up to 48 hours)
+
+### Troubleshooting
+
+**Build fails:**
+
+- Check build logs in Pages UI
+- Verify `pages.json` is valid JSON
+- Test locally: `FEDERALIST_BUILD=true npm run build`
+
+**404 page not working:**
+
+- Verify `src/routes/404.html` exists
+- Check `fallback: '404.html'` is set in `svelte.config.js`
+- Test locally with invalid URL
+
+**Assets not loading:**
+
+- Verify all asset paths are relative or absolute from root
+- Check browser console for 404 errors
+- USWDS CSS should load from CDN
+
+---
+
+## Alternative: cloud.gov Platform (Disabled)
+
+## Alternative: cloud.gov Platform (Disabled)
+
+The previous deployment method using cloud.gov Platform (Cloud Foundry) has been disabled in favor of cloud.gov Pages static site hosting.
+
+**Why disabled:**
+
+- Simpler deployment model with static site hosting
+- No need for Node.js runtime on server
+- Faster builds and deploys
+- Better performance via CDN
+
+**Configuration preserved in:**
+
+- `.github/workflows/deploy.yml.old` - GitHub Actions workflow
+- This section of DEPLOYMENT.md - Reference documentation
+
+**To re-enable Platform deployment:**
+
+1. **Restore adapter-node**:
+
+   ```bash
+   npm install @sveltejs/adapter-node@^5.2.10
+   npm uninstall @sveltejs/adapter-static
+   ```
+
+2. **Update svelte.config.js**:
+
+   ```javascript
+   import adapter from '@sveltejs/adapter-node';
+
+   const config = {
+   	kit: {
+   		adapter: adapter({
+   			out: 'build',
+   			precompress: false,
+   			envPrefix: ''
+   		})
+   	}
+   };
+   ```
+
+3. **Restore GitHub Actions**:
+
+   ```bash
+   cd .github/workflows
+   mv deploy.yml.old deploy.yml
+   ```
+
+4. **Remove Pages config**:
+
+   ```bash
+   rm pages.json
+   ```
+
+5. **Update src/routes/+layout.ts**:
+   ```typescript
+   export const prerender = true;
+   // Remove: export const ssr = false;
+   ```
+
+---
+
+## Original Platform Deployment Documentation
+
+This project was originally configured to deploy to **cloud.gov Platform** (not cloud.gov Pages) using GitHub Actions for continuous deployment. The SvelteKit SSR application ran as a Node.js application on cloud.gov.
 
 **Repository:** https://github.com/GSA-TTS/TTSE-petrified-forest-website
 
@@ -30,7 +181,9 @@ This project is configured to deploy to **cloud.gov Platform** (not cloud.gov Pa
 ## Configuration Files
 
 ### `manifest.yml`
+
 Defines the cloud.gov application configuration:
+
 - Application name: `ttse-petrified-forest-website`
 - Memory allocation: 512M
 - Node.js buildpack
@@ -39,20 +192,26 @@ Defines the cloud.gov application configuration:
 - **Note:** PORT is automatically set by cloud.gov (do not specify)
 
 ### `.cfignore`
+
 Excludes unnecessary files from deployment (similar to .gitignore):
+
 - Source files (src/)
 - Development dependencies
 - Docker files
 - Config files not needed in production
 
 ### `Procfile`
+
 Defines the process to start the application:
+
 ```
 web: node build/index.js
 ```
 
 ### `.github/workflows/deploy.yml`
+
 GitHub Actions CI/CD pipeline that:
+
 1. Checks out code
 2. Installs dependencies
 3. Runs type checking and linting
@@ -89,6 +248,7 @@ This will output JSON with `username` and `password` fields. Use these for GitHu
 Before the first deployment, configure these secrets in your GitHub repository:
 
 **Navigate to:**
+
 ```
 https://github.com/GSA-TTS/TTSE-petrified-forest-website
 → Settings → Secrets and variables → Actions → New repository secret
@@ -96,12 +256,12 @@ https://github.com/GSA-TTS/TTSE-petrified-forest-website
 
 **Add the following 4 secrets:**
 
-| Secret Name | Description | Value |
-|------------|-------------|-------|
-| `CF_USERNAME` | Service account username | From service-key output |
-| `CF_PASSWORD` | Service account password | From service-key output |
-| `CF_ORG` | Your cloud.gov organization | `sandbox-gsa` |
-| `CF_SPACE` | Your cloud.gov space name | `jk-sandbox` |
+| Secret Name   | Description                 | Value                   |
+| ------------- | --------------------------- | ----------------------- |
+| `CF_USERNAME` | Service account username    | From service-key output |
+| `CF_PASSWORD` | Service account password    | From service-key output |
+| `CF_ORG`      | Your cloud.gov organization | `sandbox-gsa`           |
+| `CF_SPACE`    | Your cloud.gov space name   | `jk-sandbox`            |
 
 ### How to Add Secrets:
 
@@ -117,6 +277,7 @@ Repository → Settings → Secrets and variables → Actions → New repository
 **Note:** The `main` branch is protected and requires Pull Requests.
 
 Deployment workflow:
+
 1. Create a feature branch
 2. Make changes and commit
 3. Push branch and create Pull Request
@@ -134,6 +295,7 @@ git push origin feat/my-new-feature
 ```
 
 The GitHub Actions workflow runs on merge to `main` and will:
+
 1. Run type checking
 2. Run linting
 3. Build the application
@@ -320,9 +482,11 @@ Before going to production:
 ## Support
 
 For cloud.gov support:
+
 - Email: support@cloud.gov
 - Slack: #cloud-gov (TTS Slack)
 
 For application issues:
+
 - Create an issue: https://github.com/GSA-TTS/TTSE-petrified-forest-website/issues
 - Contact: Jeff Keene (Project Lead)

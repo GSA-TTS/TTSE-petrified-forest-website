@@ -20,6 +20,7 @@
 ### Development with DevContainer (Recommended)
 
 1. **Open in VS Code:**
+
    ```bash
    code .
    ```
@@ -30,6 +31,7 @@
    - Wait for container to build and dependencies to install
 
 3. **Start development server:**
+
    ```bash
    npm run dev
    ```
@@ -69,19 +71,19 @@ npm run dev
 
 ## Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server with HMR |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run check` | Type check with svelte-check |
-| `npm run check:watch` | Type check in watch mode |
-| `npm run lint` | Run ESLint |
-| `npm run format` | Format code with Prettier |
+| Command               | Description                       |
+| --------------------- | --------------------------------- |
+| `npm run dev`         | Start development server with HMR |
+| `npm run build`       | Build for production              |
+| `npm run preview`     | Preview production build          |
+| `npm run check`       | Type check with svelte-check      |
+| `npm run check:watch` | Type check in watch mode          |
+| `npm run lint`        | Run ESLint                        |
+| `npm run format`      | Format code with Prettier         |
 
 ## Project Structure
 
-```
+````
 TTSE-petrified-forest-website/
 ├── .devcontainer/          # VS Code DevContainer configuration
 ├── src/
@@ -137,7 +139,7 @@ npm run build
 npm start
 
 # Preview at http://localhost:8080
-```
+````
 
 ### Docker Production Build
 

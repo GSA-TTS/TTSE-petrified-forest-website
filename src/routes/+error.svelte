@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Page not found - TTSE Petrified Forest</title>
+	<title>Page not found - FPDF</title>
 </svelte:head>
 
 <div class="usa-section">
@@ -27,7 +27,7 @@
 					<div class="margin-y-5">
 						<ul class="usa-button-group">
 							<li class="usa-button-group__item">
-								<a href="/" class="usa-button">Visit homepage</a>
+								<a href="./" class="usa-button">Visit homepage</a>
 							</li>
 						</ul>
 					</div>

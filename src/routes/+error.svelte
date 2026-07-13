@@ -17,10 +17,6 @@
 						removed it, changed its location, or made it otherwise unavailable.
 					</p>
 					<p>
-						If you typed the URL directly, check your spelling and capitalization. Our URLs look
-						like this: <strong>petrifiedforest.gov/example-one</strong>.
-					</p>
-					<p>
 						Visit our homepage for helpful tools and resources, or contact us and we'll point you in
 						the right direction.
 					</p>

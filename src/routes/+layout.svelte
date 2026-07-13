@@ -1,3 +1,7 @@
+<script>
+  import '../styles/global.css'
+</script>
+
 <svelte:head>
 	<link
 		rel="stylesheet"

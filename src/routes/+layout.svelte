@@ -1,5 +1,18 @@
 <script>
   import '../styles/global.css'
+	import {
+		Button,
+		OfficialGovBanner,
+		Header,
+		HeaderLogo,
+		HeaderNav,
+		HeaderNavBar,
+		HeaderNavItem,
+		HeaderNavMenu,
+		HeaderNavPrimary } from '@gsa-tts/svelte-ui-uswds';
+
+	let { children } = $props();
+
 </script>
 
 <svelte:head>
@@ -9,4 +22,31 @@
 	/>
 </svelte:head>
 
-<slot />
+<OfficialGovBanner />
+<Header class="bg-black">
+	{#snippet children()}
+		<HeaderNavBar>
+			<HeaderLogo href="/" title="Federal Procurement Data Fabric">
+				{#snippet children()}
+					<div class="brand">
+						<span class="brand-acronym">FPDF</span>
+						<span class="brand-name">Federal<br>Procurement<br>Data Fabric</span>
+					</div>
+				{/snippet}
+			</HeaderLogo>
+			<HeaderNavMenu variant="menu" />
+		</HeaderNavBar>
+		<!-- <HeaderNav>
+			<HeaderNavPrimary>
+				<HeaderNavItem label="Getting Started" href="javascript:void(0);" />
+				<HeaderNavItem label="Learn" href="javascript:void(0);" />
+				<HeaderNavItem label="Documentation" href="javascript:void(0);" />
+				<HeaderNavItem label="Help" href="javascript:void(0);" />
+			</HeaderNavPrimary>
+		</HeaderNav> -->
+	{/snippet}
+</Header>
+
+<main id="main-content">
+	{@render children()}
+</main>

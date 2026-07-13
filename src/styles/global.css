@@ -1,0 +1,47 @@
+/* Override logo link color for dark header */
+.usa-header.bg-black .usa-logo a {
+  color: white;
+}
+
+.usa-header.bg-black .usa-nav__link,
+.usa-header.bg-black .usa-nav-link {
+  color: white;
+}
+
+.usa-header.bg-black .usa-menu-btn {
+  color: white;
+}
+
+.usa-header.bg-black .usa-logo a:hover,
+.usa-header.bg-black .usa-nav__link:hover,
+.usa-header.bg-black .usa-nav-link:hover {
+  color: #e0e0e0;
+}
+
+.usa-header.bg-black a:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.usa-header.bg-black {
+  background-color: black;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;      /* vertically aligns different font sizes */
+  gap: 0.5rem;              /* space between the two text items */
+  white-space: nowrap;      /* keeps them on the same line */
+}
+
+.brand-acronym {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.brand-name {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+}

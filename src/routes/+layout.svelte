@@ -1,7 +1,9 @@
 <script>
   import '../styles/global.css'
+	import gsaLogo from '$lib/assets/img/GSA-250-footer-logo.png?url'
 	import {
 		Button,
+		Link,
 		OfficialGovBanner,
 		Header,
 		HeaderLogo,
@@ -9,7 +11,10 @@
 		HeaderNavBar,
 		HeaderNavItem,
 		HeaderNavMenu,
-		HeaderNavPrimary } from '@gsa-tts/svelte-ui-uswds';
+		HeaderNavPrimary,
+		Identifier,
+		IdentifierLogo,
+		IdentifierRequiredLinksItem } from '@gsa-tts/svelte-ui-uswds';
 
 	let { children } = $props();
 
@@ -50,3 +55,24 @@
 <main id="main-content">
 	{@render children()}
 </main>
+
+<Identifier domain="fpdf.gov">
+  {#snippet logos()}
+    <IdentifierLogo
+      src={gsaLogo}
+      alt="GSA logo"
+    />
+  {/snippet}
+  {#snippet agencyLinks()}
+    <Link href="https://www.gsa.gov" variant="external">U.S. General Services Administration</Link>
+  {/snippet}
+  {#snippet requiredLinks()}
+    <IdentifierRequiredLinksItem href="https://www.gsa.gov/about-gsa" variant="external">About GSA</IdentifierRequiredLinksItem>
+    <IdentifierRequiredLinksItem href="https://www.gsa.gov/website-information/accessibility-statement" variant="external">Accessibility statement</IdentifierRequiredLinksItem>
+    <IdentifierRequiredLinksItem href="https://www.gsa.gov/reference/freedom-of-information-act-foia" variant="external">FOIA Requests</IdentifierRequiredLinksItem>
+    <IdentifierRequiredLinksItem href="https://www.gsa.gov/reference/civil-rights-programs/the-no-fear-act" variant="external">No FEAR Act</IdentifierRequiredLinksItem>
+    <IdentifierRequiredLinksItem href="https://www.gsaig.gov/" variant="external">Office of the Inspector General</IdentifierRequiredLinksItem>
+    <IdentifierRequiredLinksItem href="https://www.gsa.gov/reference/reports" variant="external">Reports</IdentifierRequiredLinksItem>
+    <IdentifierRequiredLinksItem href="https://www.gsa.gov/website-information/website-policies#privacy" variant="external">Privacy Policy</IdentifierRequiredLinksItem>
+	{/snippet}
+</Identifier>

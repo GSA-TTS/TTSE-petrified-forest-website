@@ -31,7 +31,7 @@
 <Header class="bg-black">
 	{#snippet children()}
 		<HeaderNavBar>
-			<HeaderLogo href="/" title="Federal Procurement Data Fabric">
+			<HeaderLogo href={resolve('/')} title="Federal Procurement Data Fabric">
 				{#snippet children()}
 					<div class="brand">
 						<span class="brand-acronym">FPDF</span>

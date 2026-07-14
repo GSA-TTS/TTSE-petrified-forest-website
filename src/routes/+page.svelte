@@ -32,7 +32,7 @@
 				Our intelligent interface interprets natural language queries and returns data-backed answers, making complex analysis accessible to every user, regardless of technical background.
 			</p>
 		</div>
-		<div class="grid-row grid-gap bg-white padding-2">
+		<div class="grid-row grid-gap bg-white padding-top-2 padding-bottom-2">
 			<div class="tablet:grid-col-6">
 				<h2 class="margin-y-0">For the Acquisition Workforce</h2>
 				<p>
@@ -52,7 +52,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="grid-row grid-gap bg-white padding-2 margin-top-4">
+		<div class="grid-row grid-gap bg-white margin-top-4 padding-top-2 padding-bottom-2">
 			<div class="tablet:grid-col-6">
 				<h2 class="margin-y-0">For Executives</h2>
 				<p>
@@ -72,7 +72,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="grid-row grid-gap bg-white padding-2 margin-top-4">
+		<div class="grid-row grid-gap bg-white margin-top-4 padding-top-2 padding-bottom-2">
 			<div class="tablet:grid-col-6">
 				<h2 class="margin-y-0">For Analysts and Technical Users</h2>
 				<p>
@@ -110,18 +110,18 @@
 			</div>
 			<div class="tablet:grid-col-1 usa-prose"></div>
 			<div class="tablet:grid-col-6 usa-prose">
-				<Accordion bordered class="custom-accordion">
-					<AccordionItem id="who" title="Who can access FPDF?" expanded>
+				<Accordion bordered class="custom-accordion" multiselectable>
+					<AccordionItem id="access" title="Who can access FPDF?" expanded>
 						FPDF is available to federal employees with a valid Login.gov account. Access levels may vary by agency and role. Contract your agency’s FPDF point of contact to learn more about access permissions.
 					</AccordionItem>
-					<AccordionItem id="what" title="What datasets are included in FPDF?">
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+					<AccordionItem id="datasets" title="What datasets are included in FPDF?">
+						FPDF consolidates procurement-related data from across the federal government, including contract awards, vendor information, spending history, and more. The platform continues to expand as additional data sources are integrated.
 					</AccordionItem>
-					<AccordionItem id="do" title="Do I need technical skills to use FPDF?">
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+					<AccordionItem id="tech-skills" title="Do I need technical skills to use FPDF?">
+						No. FPDF is designed for users at all technical levels. The AI-powered interface allows you to ask questions in plain language, and the dashboard builder requires no coding. However, advanced users can access more powerful query tools.
 					</AccordionItem>
-					<AccordionItem id="is" title="Is my agency’s data secure?">
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+					<AccordionItem id="secure" title="Is my agency’s data secure?">
+						Yes. FPDF is built on federal security standards, including FedRAMP-authorized infrastructure and role-based access controls. Data access is governed by your agency’s permissions and applicable federal policy.
 					</AccordionItem>
 				</Accordion>
 			</div>
@@ -143,9 +143,6 @@
 		max-width: 35rem;
 		background-color: transparent;
 		padding-left: 0;
-	}
-	.new-section {
-		background-color: rgb(240, 240, 240);
 	}
 	:global(.custom-accordion .usa-accordion__button) {
 		background-color:  #aacdec;

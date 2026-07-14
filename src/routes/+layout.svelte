@@ -41,12 +41,12 @@
 			</HeaderLogo>
 			<HeaderNavMenu variant="menu" />
 		</HeaderNavBar>
-		<!-- <HeaderNav>
+		<HeaderNav>
 			<HeaderNavPrimary>
-				<HeaderNavItem label="Getting Started" href="javascript:void(0);" />
+				<!-- <HeaderNavItem label="Getting Started" href="javascript:void(0);" />
 				<HeaderNavItem label="Learn" href="javascript:void(0);" />
-				<HeaderNavItem label="Documentation" href="javascript:void(0);" />
-				<HeaderNavItem label="Help" href="javascript:void(0);" />
+				<HeaderNavItem label="Documentation" href="javascript:void(0);" /> -->
+				<HeaderNavItem label="Help" href="/help" />
 			</HeaderNavPrimary>
 		</HeaderNav> -->
 	{/snippet}

@@ -1,5 +1,6 @@
 <script>
   import '../styles/global.css'
+	import gsaLogo from '$lib/assets/img/GSA-250-footer-logo.png?url'
 	import {
 		Button,
 		Link,
@@ -58,7 +59,7 @@
 <Identifier domain="fpdf.gov">
   {#snippet logos()}
     <IdentifierLogo
-      src="/assets/img/GSA-250-footer-logo.png"
+      src={gsaLogo}
       alt="GSA logo"
     />
   {/snippet}

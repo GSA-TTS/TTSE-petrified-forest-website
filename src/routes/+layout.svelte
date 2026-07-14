@@ -1,8 +1,8 @@
 <script>
   import '../styles/global.css'
+	import { resolve } from '$app/paths';
 	import gsaLogo from '$lib/assets/img/GSA-250-footer-logo.png?url'
 	import {
-		Button,
 		Link,
 		OfficialGovBanner,
 		Header,
@@ -46,7 +46,7 @@
 				<!-- <HeaderNavItem label="Getting Started" href="javascript:void(0);" />
 				<HeaderNavItem label="Learn" href="javascript:void(0);" />
 				<HeaderNavItem label="Documentation" href="javascript:void(0);" /> -->
-				<HeaderNavItem label="Help" href="/help" />
+				<HeaderNavItem label="Help" href={resolve('/help')} />
 			</HeaderNavPrimary>
 		</HeaderNav> -->
 	{/snippet}

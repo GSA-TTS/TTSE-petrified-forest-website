@@ -9,7 +9,11 @@
 		HeaderNavBar,
 		HeaderNavItem,
 		HeaderNavMenu,
-		HeaderNavPrimary } from '@gsa-tts/svelte-ui-uswds';
+		HeaderNavPrimary,
+		Identifier,
+		IdentifierMasthead,
+		IdentifierRequiredLinks,
+		IdentifierUSAGov } from '@gsa-tts/svelte-ui-uswds';
 
 	let { children } = $props();
 
@@ -50,3 +54,16 @@
 <main id="main-content">
 	{@render children()}
 </main>
+
+<Identifier>
+	<IdentifierMasthead
+		domain="fpdf.gov"
+		agencies={[{ name: 'U.S. General Services Administration', href: 'https://www.gsa.gov' }]}
+	/>
+	<IdentifierRequiredLinks
+	    links={[
+      { text: 'About GSA', href: 'https://www.gsa.gov/about-gsa', variant: 'external' }
+    ]}
+	/>
+	<IdentifierUSAGov />
+</Identifier>

@@ -1,0 +1,118 @@
+---
+layout: docs
+title: mdsvex Test Page
+description: A test page to verify mdsvex integration with USWDS styling
+author: FPDF Team
+date: 2026-07-15
+---
+
+<script>
+  import { Button, Link } from '@gsa-tts/svelte-ui-uswds';
+</script>
+
+# mdsvex Integration Test
+
+This is a test page to verify that mdsvex is working correctly with the USWDS component library.
+
+## Features Being Tested
+
+1. **Frontmatter** - Title, description, author, and date should display correctly
+2. **USWDS Prose Styling** - Typography should follow USWDS standards
+3. **Custom HTML Elements** - Headings and links are automatically styled
+4. **Component Integration** - Svelte components work inside markdown
+
+## Interactive Components
+
+Here's a USWDS button component:
+
+<Button variant="default">Test Button</Button>
+
+And here's a link using the Link component:
+
+<Link href="/" variant="internal">Back to Home</Link>
+
+## Code Examples
+
+```javascript
+// Example JavaScript code block
+const greeting = "Hello, mdsvex!";
+console.log(greeting);
+```
+
+### Bash Example
+
+```bash
+npm run dev
+npm run build
+FEDERALIST_BUILD=true npm run build
+```
+
+### TypeScript Example
+
+```typescript
+interface User {
+  name: string;
+  email: string;
+  role: 'admin' | 'user';
+}
+
+const user: User = {
+  name: 'Jane Doe',
+  email: 'jane@example.gov',
+  role: 'admin'
+};
+```
+
+## Lists
+
+Unordered lists with standard markdown:
+
+- Item one with standard markdown
+- Item two with more content
+- Item three to test prose styling
+  - Nested item A
+  - Nested item B
+- Item four back at the top level
+
+### Ordered Lists
+
+1. First step in the process
+2. Second step with details
+3. Third step to complete
+   1. Sub-step 3.1
+   2. Sub-step 3.2
+4. Fourth and final step
+
+## Links and Emphasis
+
+This paragraph contains **bold text**, *italic text*, and ***bold italic text***. 
+
+You can also use inline `code snippets` within paragraphs.
+
+Here's a standard markdown link: [Visit USWDS](https://designsystem.digital.gov)
+
+## Tables
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Frontmatter | ✓ | Working correctly |
+| USWDS Prose | ✓ | Typography looks good |
+| Components | ✓ | Svelte components render |
+| Code Blocks | ✓ | Syntax highlighting active |
+
+## Blockquotes
+
+> This is a blockquote to test USWDS prose styling.
+> 
+> It can span multiple paragraphs and should be styled appropriately according to USWDS design standards.
+
+## Conclusion
+
+If you can see this page with proper USWDS styling, mdsvex is working correctly! The integration includes:
+
+- ✓ Markdown processing via mdsvex
+- ✓ USWDS prose typography
+- ✓ Custom HTML element replacements
+- ✓ Svelte component support
+- ✓ Frontmatter metadata
+- ✓ Code syntax highlighting

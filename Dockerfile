@@ -1,5 +1,5 @@
 # Development Dockerfile
-FROM node:20-alpine AS development
+FROM node:24-alpine AS development
 
 # Install git and bash for development tools
 RUN apk add --no-cache git bash
@@ -22,7 +22,7 @@ CMD ["sleep", "infinity"]
 # Multi-stage build for optimal image size
 
 # Build stage
-FROM node:20-alpine AS builder
+FROM node:24-alpine AS builder
 
 WORKDIR /app
 
@@ -42,7 +42,7 @@ RUN npm run build
 RUN npm prune --production
 
 # Production stage
-FROM node:20-alpine AS production
+FROM node:24-alpine AS production
 
 WORKDIR /app
 

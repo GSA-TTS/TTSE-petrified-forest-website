@@ -2,6 +2,7 @@
   import '../styles/global.css'
 	import { resolve } from '$app/paths';
 	import gsaLogo from '$lib/assets/img/GSA-250-footer-logo.png?url'
+	import SignInButton from '$lib/components/SignInButton/SignInButton.svelte';
 	import {
 		Link,
 		OfficialGovBanner,
@@ -17,7 +18,6 @@
 		IdentifierRequiredLinksItem } from '@gsa-tts/svelte-ui-uswds';
 
 	let { children } = $props();
-
 </script>
 
 <svelte:head>
@@ -48,6 +48,7 @@
 				<HeaderNavItem label="Documentation" href="javascript:void(0);" /> -->
 				<HeaderNavItem label="Help" href={resolve('/help')} />
 			</HeaderNavPrimary>
+			<SignInButton />
 		</HeaderNav> -->
 	{/snippet}
 </Header>

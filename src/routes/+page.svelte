@@ -1,9 +1,5 @@
 <script lang="ts">
 	import { Button, Accordion, AccordionItem } from '@gsa-tts/svelte-ui-uswds';
-
-	function handleGetStarted() {
-		window.location.href = 'https://gsaext-fpdf-uat.cloud.databricks.com/';
-	}
 </script>
 
 <svelte:head>
@@ -20,7 +16,6 @@
 			<p>
 				Access detailed procurement information from across the federal government in a centralized tool integrated with AI, without needing to navigate multiple systems.
 			</p>
-			<Button variant="default" onclick={handleGetStarted}>Go to Databricks</Button>
 		</div>
 	</div>
 </section>
@@ -32,7 +27,7 @@
 				Our intelligent interface interprets natural language queries and returns data-backed answers, making complex analysis accessible to every user, regardless of technical background.
 			</p>
 		</div>
-		<div class="grid-row grid-gap bg-white padding-top-2 padding-bottom-2">
+		<div class="grid-row grid-gap bg-white padding-top-2 padding-bottom-2 decision-cards">
 			<div class="tablet:grid-col-6">
 				<h2 class="margin-y-0">For the Acquisition Workforce</h2>
 				<p>
@@ -52,7 +47,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="grid-row grid-gap bg-white margin-top-4 padding-top-2 padding-bottom-2">
+		<div class="grid-row grid-gap bg-white margin-top-4 padding-top-2 padding-bottom-2 decision-cards">
 			<div class="tablet:grid-col-6">
 				<h2 class="margin-y-0">For Executives</h2>
 				<p>
@@ -72,7 +67,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="grid-row grid-gap bg-white margin-top-4 padding-top-2 padding-bottom-2">
+		<div class="grid-row grid-gap bg-white margin-top-4 padding-top-2 padding-bottom-2 decision-cards">
 			<div class="tablet:grid-col-6">
 				<h2 class="margin-y-0">For Analysts and Technical Users</h2>
 				<p>
@@ -130,6 +125,9 @@
 </section>
 
 <style>
+	.decision-cards {
+		border-radius: 9px;
+	}
 	.usa-hero {
 		color: rgb(0, 0, 0);
 		background-image: url('/assets/img/hero-bgd.jpg');

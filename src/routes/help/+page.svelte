@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ReachOutLink from '$lib/components/ReachOutLink/ReachOutLink.svelte';
 	import { Card, CardGroup, Accordion, AccordionItem } from '@gsa-tts/svelte-ui-uswds';
 
 </script>
@@ -23,7 +24,7 @@
             {/snippet}
             {#snippet body()}
               <p>
-                Have a question not covered in the FAQs? Reach out to our team.
+                Have a question not covered in the FAQs? <ReachOutLink />
               </p>
             {/snippet}
           </Card>

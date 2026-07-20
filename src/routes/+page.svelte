@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Button, Accordion, AccordionItem } from '@gsa-tts/svelte-ui-uswds';
+	import { Accordion, AccordionItem } from '@gsa-tts/svelte-ui-uswds';
+	import ContactUsButton from '$lib/components/ContactUsButton/ContactUsButton.svelte';
 </script>
 
 <svelte:head>
@@ -101,7 +102,7 @@
 				<p>
 					FPDF is available exclusively to federal employees and authorized contractors. Contact our team to set up your agency’s access.
 				</p>
-				<Button variant="default" class="margin-top-4">Contact us</Button>
+				<ContactUsButton />
 			</div>
 			<div class="tablet:grid-col-1 usa-prose"></div>
 			<div class="tablet:grid-col-6 usa-prose">
